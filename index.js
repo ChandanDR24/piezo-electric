@@ -46,6 +46,21 @@ app.get('/api/history', async (req, res) => {
   }
 });
 
+// Fetch the latest data (GET)
+app.get('/api/latest', async (req, res) => {
+    try {
+      const result = await pool.query('SELECT * FROM sensor_data ORDER BY timestamp DESC LIMIT 1');
+      if (result.rows.length > 0) {
+        res.status(200).json(result.rows[0]);
+      } else {
+        res.status(404).json({ message: 'No data found' });
+      }
+    } catch (err) {
+      console.error('Database error:', err);
+      res.status(500).json({ error: 'Database error' });
+    }
+  });
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
