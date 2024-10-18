@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piezoelectric Data</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <h1>Piezoelectric Sensor Data</h1>
+    
+    <h2>Current Values</h2>
+    <p>Voltage: <span id="current-voltage">0</span> V</p>
+    <p>Current: <span id="current-current">0</span> mA</p>
+
+    <h2>Historical Data</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Voltage (V)</th>
+                <th>Current (mA)</th>
+            </tr>
+        </thead>
+        <tbody id="data-table-body"></tbody>
+    </table>
+</body>
+</html>

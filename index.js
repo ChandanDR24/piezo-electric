@@ -1,36 +1,51 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { Pool } = require('pg'); // Import PostgreSQL client
 
 const app = express();
-app.use(express.json()); // Parse incoming JSON requests
-app.use(cors()); // Allow cross-origin requests
+app.use(cors());
+app.use(express.json());
 
-let latestData = { voltage: 0, current: 0 }; // Store latest sensor data
+// PostgreSQL connection pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || 'postgresql://drc:89OhljlFctnc1p6PtGpAWULvRkk3myPI@dpg-cs90rbjqf0us738h85p0-a/piezo_electric',
+  ssl: { rejectUnauthorized: false }, // Necessary for some cloud-hosted databases
+});
 
-// add the public file from the frontend
-app.use(express.static(path.join(__dirname,'public')));
+// Serve frontend from 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Endpoint to receive data from ESP32 (POST)
-app.post('/api/update', (req, res) => {
+// Store data from ESP32 (POST)
+app.post('/api/update', async (req, res) => {
   const { voltage, current } = req.body;
 
   if (typeof voltage === 'number' && typeof current === 'number') {
-    latestData = { voltage, current }; // Update stored data
-    console.log('Updated Data - Voltage: ', latestData.voltage,'V, Current: ',latestData.current,' mA');
-    res.status(200).json({ message: 'Data received successfully' });
+    try {
+      // Insert data into PostgreSQL
+      await pool.query('INSERT INTO sensor_data (voltage, current) VALUES ($1, $2)', [voltage, current]);
+      console.log(`Data saved: Voltage = ${voltage}, Current = ${current}`);
+      res.status(200).json({ message: 'Data saved successfully' });
+    } catch (err) {
+      console.error('Database error:', err);
+      res.status(500).json({ error: 'Database error' });
+    }
   } else {
     res.status(400).json({ error: 'Invalid data format' });
   }
 });
 
-// Endpoint to send the latest data to the frontend (GET)
-app.get('/api/latest', (req, res) => {
-  res.status(200).json(latestData); // Send the latest data as JSON
+// Fetch all historical data (GET)
+app.get('/api/history', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM sensor_data ORDER BY timestamp DESC');
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error('Database error:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
-// Start the server on port 3000
+// Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
