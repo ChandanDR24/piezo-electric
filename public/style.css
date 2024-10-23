@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'Hero';
-    src: url('fonts/Gold\ and\ Queen.otf') format('truetype');
+    src: url('/Gold\ and\ Queen.otf') format('truetype');
 }
 @font-face {
     font-family: 'Regular';
-    src: url('fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+    src: url('/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
 }
 @font-face {
     font-family: 'Italic';
-    src: url('fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
 }
 *{
     margin: 0;
@@ -107,13 +107,23 @@ nav{
     align-items: center;
     justify-content: space-between;
     padding: 25px 40px 15px 40px;
-    font-size: 3vh;
+    font-size: 28px;
     font-family: "Hero", monospace;
+    /* z-index: 10; */
+    
 }
 
 nav a{
     text-decoration: none;
     color: white;
+    position: relative;
+}
+
+nav input,label{
+    position: relative;
+}
+
+nav .links-container label{
     position: relative;
 }
 
@@ -152,11 +162,11 @@ nav .part2{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 6vw;
+    
 }
 
 .part1 a{
-    font-size: 3.5vh;
+    font-size: 4vh;
 }
 
 .mainbody{
@@ -165,5 +175,77 @@ nav .part2{
     height: 80%;
     position: absolute;
     padding: 60px;
-
+    font-size: 1.3vw;
 }
+
+nav .links-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6vw;
+}
+
+nav .links-container a{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sidebar-active,.open-sidebar-button,.close-sidebar-button{
+    display: none;
+}
+
+@media(max-width:1075px){
+    nav .links-container{
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        right:-100%;
+        width: 50vw;
+        background-color: rgba(0, 0, 0, 0.506);
+        backdrop-filter: blur(5px);
+        box-shadow: -5px 0 5px rgba(0,0,0,.25);
+        transition: .8s ease-out;
+        font-size: 3vh;
+    }
+
+    nav .part2 a{
+        box-sizing: border-box;
+        height: auto;
+        padding: 20px 30px;
+        justify-content: flex-start;
+
+    }
+
+    nav .part2 a .line,#line{
+        display: none;
+    }
+
+    .open-sidebar-button{
+        right: 60%;
+        display: block;
+    }
+    
+    .close-sidebar-button{
+        right: -80%;
+        top:4vw;
+        display: block;
+    }
+    #sidebar-active:checked~ .links-container{
+        right: 0;
+    }
+
+    #sidebar-active:checked~ #overlay{
+        /* background-color: red; */
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+    }
+}
+
