@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'Hero';
+    src: url('fonts/Gold\ and\ Queen.otf') format('truetype');
+}
+@font-face {
+    font-family: 'Regular';
+    src: url('fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Italic';
+    src: url('fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color:#111;
+    color: #fff;
+    font-family: 'Regular';
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.slider{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    /* z-index: -1; */
+}
+
+.list{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    width: max-content;
+    transition: 1s;
+}
+
+.list img{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    align-items: center;
+    opacity: .9;
+}
+
+.buttons{
+    position: absolute;
+    top: 45%;
+    left: 1%;
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.dots{
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.dots li{
+    list-style: none;
+    width: 7px;
+    height: 7px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 20px;
+    transition: 1s;
+}
+
+.dots li.active{
+    width: 30px;
+}
+
+
+nav{
+    /* background-color: red; */
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 40px 15px 40px;
+    font-size: 3vh;
+    font-family: "Hero", monospace;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    position: relative;
+}
+
+nav a .line{
+    position: absolute;
+    bottom: 0;
+    display: inline-block;
+    width: 100%;
+    height: 0.8px;
+    background-color: #fff;
+}
+
+#line1{
+    left: 0;
+    width: 0%;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    transition-delay: .1s;
+}
+
+#line2{
+    right: 0;
+    width: 100%;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+
+}
+
+nav a:hover #line1{
+    width: 100%;
+}
+nav a:hover #line2{
+    width: 0%;
+}
+
+nav .part2{
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6vw;
+}
+
+.part1 a{
+    font-size: 3.5vh;
+}
+
+.mainbody{
+    /* background-color: red; */
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    padding: 60px;
+
+}

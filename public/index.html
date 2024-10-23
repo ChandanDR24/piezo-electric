@@ -3,26 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piezoelectric Data</title>
+    <link rel="icon" type="image/x-icon" href="/image/favicon.png">
+    <title>Sahasra</title>
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Piezoelectric Sensor Data</h1>
-    
-    <h2>Current Values</h2>
-    <p>Voltage: <span id="current-voltage">0</span> V</p>
-    <p>Current: <span id="current-current">0</span> mA</p>
+    <div class="slider">
+        <div class="list">
+            <div class="item">
+                <img src="/public/static/bg1.jpg" alt="bg1">
+            </div>
+            <div class="item">
+                <img src="/public/static/image1.jpeg" alt="bg1">
+            </div>
+            <div class="item">
+                <img src="/public/static/image2.jpeg" alt="bg1">
+            </div>
+            <div class="item">
+                <img src="/public/static/bg4.jpg" alt="bg1">
+            </div>
+        </div>
 
-    <h2>Historical Data</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Timestamp</th>
-                <th>Voltage (V)</th>
-                <th>Current (mA)</th>
-            </tr>
-        </thead>
-        <tbody id="data-table-body"></tbody>
-    </table>
+
+        <div class="main">
+            <nav>
+                <div class="part1">
+                    <img src="" alt="">
+                    <a href="/public/index.html">SAHASRA
+                        <span id="line1" class="line"></span>
+                        <span id="line2" class="line"></span>
+                    </a>
+                </div>
+                <div class="part2">
+                    <a href="/public/components/about.html">About Us
+                        <span id="line1" class="line"></span>
+                        <span id="line2" class="line"></span>
+                    </a>
+                    <a href="">Blog
+                        <span id="line1" class="line"></span>
+                        <span id="line2" class="line"></span>
+                    </a>
+                    <a href="">References
+                        <span id="line1" class="line"></span>
+                        <span id="line2" class="line"></span>
+                    </a>
+                    <a href="">Contact Us
+                        <span id="line1" class="line"></span>
+                        <span id="line2" class="line"></span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="mainbody">
+                <h2>Current Values</h2>
+            <p>Voltage: <span id="current-voltage">0</span> V</p>
+            <p>Current: <span id="current-current">0</span> mA</p>
+        
+            <h2>Historical Data</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Voltage (V)</th>
+                        <th>Current (mA)</th>
+                    </tr>
+                </thead>
+                <tbody id="data-table-body"></tbody>
+            </table>
+            </div>
+        </div>
+
+
+        <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+    
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+
+    
 </body>
 </html>

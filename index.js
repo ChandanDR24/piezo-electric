@@ -16,6 +16,8 @@ const pool = new Pool({
 // Serve frontend from 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 // Store data from ESP32 (POST)
 app.post('/api/update', async (req, res) => {
   const { voltage, current } = req.body;
