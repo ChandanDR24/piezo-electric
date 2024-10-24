@@ -2,6 +2,62 @@ window.history.pushState(null, "", window.location.href);
 window.onpopstate = function () {
   window.history.pushState(null, "", window.location.href);
 };
+
+function loaderAnimation(){
+  var tl = gsap.timeline();
+  tl
+      .from(".main .loader .slogan p",{
+          y:"-100%",
+          opacity:0,
+          delay:0.7,
+          duration:.5,
+          stagger:.1,
+          ease:Expo
+      },"one")
+      .from(".main .loader .logo",{
+          y:"100%",
+          opacity:0,
+          delay:0.7,
+          duration:.5,
+          stagger:.1,
+          ease:Expo
+      },"one")
+      .to(".main .loader .slogan p",{
+          y:"100%",
+          opacity:0,
+          delay:2,
+          duration:0.5
+      },"two")
+      .to(".main .loader .logo",{
+          y:"-100%",
+          opacity:0,
+          delay:2,
+          duration:0.5
+      },"two")
+      .to(".loader", {
+          height: 0,
+          duration: 1,
+          ease: Circ.easeInOut
+      },"three")
+      .to("#green", {
+          height: "100vh",
+          top: 0,
+          duration: 1,
+          ease:Expo
+      },"three")
+      .to("#green", {
+          height: "0vh",
+          top: 0,
+          duration: 0.6,
+          ease: Circ.easeInOut,
+          // onComplete:function(){
+          //     animateHomepage();
+          // }
+
+      })
+}
+
+loaderAnimation();
 async function fetchCurrentValues() {
     try {
       const response = await fetch('/api/latest');
@@ -47,58 +103,4 @@ async function fetchCurrentValues() {
   };
 
 
-function loaderAnimation(){
-    var tl = gsap.timeline();
-    tl
-        .from(".main .loader .slogan p",{
-            y:"-100%",
-            opacity:0,
-            delay:0.7,
-            duration:.5,
-            stagger:.1,
-            ease:Expo
-        },"one")
-        .from(".main .loader .logo",{
-            y:"100%",
-            opacity:0,
-            delay:0.7,
-            duration:.5,
-            stagger:.1,
-            ease:Expo
-        },"one")
-        .to(".main .loader .slogan p",{
-            y:"100%",
-            opacity:0,
-            delay:2,
-            duration:0.5
-        },"two")
-        .to(".main .loader .logo",{
-            y:"-100%",
-            opacity:0,
-            delay:2,
-            duration:0.5
-        },"two")
-        .to(".loader", {
-            height: 0,
-            duration: 1,
-            ease: Circ.easeInOut
-        },"three")
-        .to("#green", {
-            height: "100vh",
-            top: 0,
-            duration: 1,
-            ease:Expo
-        },"three")
-        .to("#green", {
-            height: "0vh",
-            top: 0,
-            duration: 0.6,
-            ease: Circ.easeInOut,
-            // onComplete:function(){
-            //     animateHomepage();
-            // }
 
-        })
-}
-
-loaderAnimation();
