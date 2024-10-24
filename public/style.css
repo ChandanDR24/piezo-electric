@@ -228,7 +228,7 @@ nav .links-container a {
 }
 
 
-@media(max-width:394px) {
+@media(max-width:344px) {
 
     .dots #next,
     #prev {
@@ -333,6 +333,17 @@ nav .links-container a {
     }
     .main .sub-main h1{
         font-size: 25px;
+    }
+
+    .dashboard{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'hero';
+        position: absolute;
+        bottom: 2vh;
+        left: 50%;
+        transform: translate(-50%,-15%);
     }
 
     .dashboard a{
