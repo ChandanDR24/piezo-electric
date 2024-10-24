@@ -341,7 +341,7 @@ nav .links-container a {
         justify-content: center;
         font-family: 'hero';
         position: absolute;
-        bottom: 2vh;
+        bottom: 4vh;
         left: 50%;
         transform: translate(-50%,-15%);
     }
