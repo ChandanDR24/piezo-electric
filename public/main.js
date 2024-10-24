@@ -3,11 +3,8 @@ window.onpopstate = function () {
   window.history.pushState(null, "", window.location.href);
 };
 
-
-
-
-
-let list = document.querySelector('.slider .list');
+function animateSlider(){
+  let list = document.querySelector('.slider .list');
 let items = document.querySelectorAll('.slider .list .item');
 let dots = document.querySelectorAll('.slider .dots li');
 let prev = document.getElementById('prev');
@@ -106,11 +103,8 @@ function reloadSlider() {
   }, 3000);
 }
 
-
-
-
-
-
+}
+animateSlider();
 async function fetchCurrentValues() {
   try {
     const response = await fetch('/api/latest');
@@ -154,3 +148,4 @@ window.onload = async () => {
   // Update current values every second (1000 milliseconds)
   // setInterval(fetchCurrentValues, 1000);
 };
+
