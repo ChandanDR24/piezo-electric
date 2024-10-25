@@ -31,7 +31,7 @@ body,html{
     height: 100vh;
     background-color: #111;
     color: #fff;
-    font-family:'sans';
+    font-family: Helvetica, sans-serif;
     z-index: 99;
     overflow: hidden;
 }
@@ -53,8 +53,7 @@ body,html{
     align-items: center;
     justify-content: end;
     gap: 30px;
-    bottom: 20px;
-    right: 20px;
+    
     /* letter-spacing: 4px; */
 }
 
@@ -78,9 +77,50 @@ body,html{
 .home{
     height: 100vh;
     width: 100%;
-    background-color: #fff;
+    background-color: #111;
     z-index: 98;
 }
+
+
+#load{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transform: translate(-50%,-50%); */
+}
+/* HTML: <div class="loader"></div> */
+.loader-animation {
+    width: 100px;
+    aspect-ratio: 1;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-color: #ccc #0000;
+    animation: l16 1s infinite linear;
+  }
+  .loader-animation::before,
+  .loader-animation::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 5px;
+    border: inherit;
+    border-radius: 50%;
+  }
+  .loader-animation::before {
+    border-color: green #111;
+    animation: inherit; 
+    animation-duration: .5s;
+    animation-direction: reverse;
+  }
+  .loader-animation::after {
+    margin: 16px;
+  }
+
+  @keyframes l16 { 
+    100%{transform: rotate(1turn)}
+  }
 
 
 @media(max-width:315px){
@@ -89,31 +129,31 @@ body,html{
     }
 }
 
-@media(max-width:699px){
-    .loader .slogan{
-        position: absolute;
-        width: 50%;
-        font-size: 15px;
-        top: 20px;
-        left: 20px;        /* letter-spacing: 1px; */
-    }
-    
+@media(min-width:700px){
     .loader .logo{
-        position: absolute;
-        font-size: 25px;
+        bottom: 20px;
+    right: 20px;
+    }
+}
+
+@media(max-width:699px){
+
+    .loader .slogan{
+        display: none;
+    }
+    .loader .logo{
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
         display: flex;
         align-items: center;
-        justify-content: end;
-        gap: 10px;
-        bottom: 20px;
-        right: 20px;
-        /* letter-spacing: 4px; */
+        justify-content: center;
+        flex-direction: column;
+        gap:20px;
     }
-    
-    .main .logo .image{
-        width: 50px;
-        height: 50px;
-        background-color: green;
-        border-radius: 50%;
+    #load{
+        position: absolute;
+        top: 25%;
     }
 }

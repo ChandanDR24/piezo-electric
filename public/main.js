@@ -22,18 +22,27 @@ function loaderAnimation(){
           stagger:.1,
           ease:Expo
       },"one")
+      .from("#load .loader-animation",{
+        opacity:0,
+        duration:.2,
+        ease:Expo
+      })
       .to(".main .loader .slogan p",{
-          y:"100%",
-          opacity:0,
-          delay:2,
-          duration:0.5
-      },"two")
-      .to(".main .loader .logo",{
           y:"-100%",
           opacity:0,
           delay:2,
           duration:0.5
       },"two")
+      .to(".main .loader .logo",{
+          y:"100%",
+          opacity:0,
+          delay:2,
+          duration:0.5
+      },"two")
+      .to("#load .loader-animation",{
+        opacity:0,
+        duration:.1
+      })
       .to(".loader", {
           height: 0,
           duration: 1,
@@ -42,13 +51,13 @@ function loaderAnimation(){
       .to("#green", {
           height: "100vh",
           top: 0,
-          duration: 1,
-          ease:Expo
+          duration: .6,
+          ease:Circ.easeInOut
       },"three")
       .to("#green", {
           height: "0vh",
           top: 0,
-          duration: 0.6,
+          duration: 0.5,
           ease: Circ.easeInOut,
           // onComplete:function(){
           //     animateHomepage();
@@ -58,6 +67,8 @@ function loaderAnimation(){
 }
 
 loaderAnimation();
+
+
 // async function fetchCurrentValues() {
 //     try {
 //       const response = await fetch('/api/latest');
