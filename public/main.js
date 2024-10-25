@@ -7,41 +7,35 @@ function loaderAnimation(){
   var tl = gsap.timeline();
   tl
       .from(".main .loader .slogan p",{
-          y:"-100%",
           opacity:0,
-          delay:0.7,
-          duration:.5,
+          delay:0.8,
+          duration:.4,
           stagger:.1,
           ease:Expo
       },"one")
       .from(".main .loader .logo",{
-          y:"100%",
           opacity:0,
-          delay:0.7,
-          duration:.5,
+          delay:0.8,
+          duration:.4,
           stagger:.1,
           ease:Expo
       },"one")
       .from("#load .loader-animation",{
         opacity:0,
-        duration:.2,
         ease:Expo
       })
       .to(".main .loader .slogan p",{
           y:"-100%",
           opacity:0,
-          delay:2,
-          duration:0.5
+          delay:1,
       },"two")
       .to(".main .loader .logo",{
-          y:"100%",
+          y:"-100%",
           opacity:0,
-          delay:2,
-          duration:0.5
+          delay:1,
       },"two")
       .to("#load .loader-animation",{
         opacity:0,
-        duration:.1
       })
       .to(".loader", {
           height: 0,
@@ -51,13 +45,13 @@ function loaderAnimation(){
       .to("#green", {
           height: "100vh",
           top: 0,
-          duration: .6,
           ease:Circ.easeInOut
       },"three")
       .to("#green", {
           height: "0vh",
           top: 0,
-          duration: 0.5,
+          duration: 0.3,
+          delay:-.2,
           ease: Circ.easeInOut,
           // onComplete:function(){
           //     animateHomepage();
