@@ -60,7 +60,7 @@ function loaderAnimation(){
       })
 }
 
-// loaderAnimation();
+loaderAnimation();
 
 
 // async function fetchCurrentValues() {
