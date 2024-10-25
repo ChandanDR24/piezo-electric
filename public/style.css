@@ -177,11 +177,14 @@ html {
     #load {
         position: absolute;
         top: 34%;
-
     }
 
     .loader .logo h1 {
-        font-size: 75px;
+        font-size: 60px;
+    }
+    .loader .logo .image {
+        width: 60px;
+        height: 60px;
     }
 
 }
