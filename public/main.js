@@ -6,61 +6,42 @@ window.onpopstate = function () {
 function loaderAnimation(){
   var tl = gsap.timeline();
   tl
-      .from(".main .loader .slogan p",{
-          opacity:0,
-          delay:0.8,
-          duration:.4,
-          stagger:.1,
-          ease:Expo
-      },"one")
-      .from(".main .loader .logo",{
-          opacity:0,
-          delay:0.8,
-          duration:.4,
-          stagger:.1,
-          ease:Expo
-      },"one")
       .from("#load .loader-animation",{
-        opacity:0,
-        ease:Expo
-      })
+            opacity:0,
+            ease:Expo
+        },"one")
       .to(".main .loader .slogan p",{
-          y:"-100%",
           opacity:0,
-          delay:1,
+          delay:1.5
       },"two")
       .to(".main .loader .logo",{
-          y:"-100%",
           opacity:0,
-          delay:1,
+          delay:1.5
       },"two")
       .to("#load .loader-animation",{
         opacity:0,
+      },)
+      .to("#green", {
+        width: "400vw",
+        height: "400vw",
+        // borderRadius: "100%",
+        duration: 1.5,
+        ease: "power2.out"
       })
-      .to(".loader", {
-          height: 0,
-          duration: 1,
-          ease: Circ.easeInOut
-      },"three")
-      .to("#green", {
-          height: "100vh",
-          top: 0,
-          ease:Circ.easeInOut
-      },"three")
-      .to("#green", {
-          height: "0vh",
-          top: 0,
-          duration: 0.3,
-          delay:-.2,
-          ease: Circ.easeInOut,
-          // onComplete:function(){
-          //     animateHomepage();
-          // }
-
+      .to("#green",{
+        width: "100vw",
+        height: "100vh",
+        borderRadius: "0",
+        duration:0
+        // delay:-1
+      })
+      .from("#green .get-started",{
+        opacity:0
       })
 }
 
-loaderAnimation();
+    loaderAnimation();
+
 
 
 // async function fetchCurrentValues() {

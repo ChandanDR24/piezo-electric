@@ -1,6 +1,6 @@
 @font-face {
-    font-family: hero;
-    src: url(/hilmar-3.woff);
+    font-family: yoonche;
+    src: url(/YDYoonche\ M.ttf);
 }
 @font-face {
     font-family: poppins;
@@ -28,10 +28,13 @@ html {
     height: 100%;
     color: #fff;
     font-weight: 100;
+    overflow: hidden;
 }
 
 .main {
     width: 100%;
+    overflow: hidden;
+
 }
 
 .loader {
@@ -86,19 +89,28 @@ html {
 #green {
     /* display: none; */
     position: absolute;
-    top: 100%;
+    /* top: 100%;
     width: 100%;
     height: 0vh;
+    
+     */
+    width: 0px;
+    height: 0px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     z-index: 99;
     background-color: #cdf756;
+    border-radius: 70%;
+    overflow: hidden;
 }
 
-.home {
+/* .home {
     height: 100vh;
     width: 100%;
     background-color: #111;
     z-index: 98;
-}
+} */
 
 
 #load {
@@ -130,7 +142,7 @@ html {
 }
 
 .loader-animation::before {
-    border-color: #cdf756 #111;
+    border-color: #cbf654 #111;
     animation: inherit;
     animation-duration: .5s;
     animation-direction: reverse;
@@ -143,6 +155,155 @@ html {
 @keyframes l16 {
     100% {
         transform: rotate(1turn)
+    }
+}
+
+
+.get-started{
+    width: 100%;
+    height: 100%;
+    color: black;
+    
+}
+
+.get-started nav{
+    width: 100%;
+    height: 12%;
+    /* background-color: black; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+
+.get-started nav .part1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: red; */
+    padding: 10px;
+    gap: 10px;
+    font-size: 20px;
+    font-family: "poppinsl";
+}
+
+.get-started nav .part1 .image{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 50%;
+
+}
+
+.get-started nav .part2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 22px;
+}
+.get-started .center{
+    width: 100%;
+    height: 88%;
+    font-family: "poppinsl";
+    font-weight:200;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    font-size: 40px;
+    /* background-color: red; */
+}
+
+.get-started .center .center-text{
+    margin-top: 10vh;
+    margin-left: 4vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    /* background-color: pink; */
+}
+.get-started .center .center-text #text2{
+    margin-left: 250px;
+}
+.get-started .center .center-text #text2 span{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.get-started .center .login{
+    margin-top: 5vh;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.get-started .center .login a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    background-color: black;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+@media(max-width:956px){
+    .get-started .center .center-text{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 3vh ;
+        font-size: 32px;
+    }
+    .get-started .center .center-text #text2{
+        margin-left: 100px;
+    }
+}
+
+@media(max-width:625px){
+    .get-started .center .center-text{
+        font-size: 5vw;
+    }
+    .get-started .center .center-text #text2{
+        margin-left: 20px;
+    }
+    .get-started nav .part1{
+        padding: 2px;
+    }
+    .get-started nav .part1 h1{
+        font-size: 25px;
+    }
+    .get-started nav .part1 .image{
+        width: 30px;
+        height: 30px;
+    }
+    .get-started nav .part2{
+        font-size: 25px;
+        padding: 2px;
+    }
+    .get-started .center .login{
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: red; */
+        
+    }
+    .get-started .center .login a{
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        background-color: black;
+        padding: 20px;
+        border-radius: 5px;
     }
 }
 
