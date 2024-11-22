@@ -160,6 +160,7 @@ html {
 
 
 .get-started{
+    position: absolute;
     width: 100%;
     height: 100%;
     color: black;
@@ -169,11 +170,13 @@ html {
 .get-started nav{
     width: 100%;
     height: 12%;
-    /* background-color: black; */
+    /* background-color: green; */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
+    padding: 0px 50px;
+    margin: 15px 0px;
+    font-family: "poppinsl";
 }
 
 .get-started nav .part1{
@@ -181,10 +184,8 @@ html {
     align-items: center;
     justify-content: space-between;
     /* background-color: red; */
-    padding: 10px;
     gap: 10px;
     font-size: 20px;
-    font-family: "poppinsl";
 }
 
 .get-started nav .part1 .image{
@@ -193,6 +194,14 @@ html {
     background-color: black;
     border-radius: 50%;
 
+}
+.login a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    background-color: black;
+    padding: 15px;
+    border-radius: 5px;
 }
 
 .get-started nav .part2{
@@ -204,75 +213,70 @@ html {
 }
 .get-started .center{
     width: 100%;
-    height: 88%;
     font-family: "poppinsl";
-    font-weight:200;
     letter-spacing: 1px;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 20px;
-    font-size: 40px;
+    padding:50px;
+    font-size: 5vw;
     /* background-color: red; */
 }
 
-.get-started .center .center-text{
-    margin-top: 10vh;
-    margin-left: 4vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    /* background-color: pink; */
-}
-.get-started .center .center-text #text2{
-    margin-left: 250px;
-}
-.get-started .center .center-text #text2 span{
-    padding-left: 10px;
-    padding-right: 10px;
-    color: #fff;
-    background-color: black;
-    border-radius: 5px;
-}
-
-.get-started .center .login{
-    margin-top: 5vh;
-    width: 60%;
+.get-started .center #text1{
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: flex-start;
 }
-.get-started .center .login a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 20px;
-    background-color: black;
-    padding: 20px;
-    border-radius: 5px;
+.get-started .center #text2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
+.get-started .para{
+    display: none;
+}
+
+
 @media(max-width:956px){
-    .get-started .center .center-text{
-        width: 100%;
-        margin-left: 0;
-        margin-top: 3vh ;
-        font-size: 32px;
+    .get-started nav{
+        padding: 0 20px;
+        margin-top: 25px;
+        margin-bottom: 0;
+        /* background-color: red; */
     }
-    .get-started .center .center-text #text2{
-        margin-left: 100px;
+
+    .get-started .center{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items:flex-start;
+        font-family: "poppinsl";
+        letter-spacing: 1px;
+        padding: 30px 0 40px 0;
+        font-size: 6vw;
+        /* background-color: red; */
+    }
+    .get-started .para{
+        display: flex;
+        padding: 0 40px;
+        font-family: 'poppinsl';
+    }
+    body{
+        position: relative;
+    }
+    nav .login{
+        position: absolute;
+        bottom: 150px;
+        left: 50%;
+        transform: translate(-50%,0);
+    }
+    nav .login a{
+        border-radius: 15px;
+        padding: 20px 50px;
+        cursor: pointer;
     }
 }
 
 @media(max-width:625px){
-    .get-started .center .center-text{
-        font-size: 5vw;
-    }
-    .get-started .center .center-text #text2{
-        margin-left: 20px;
-    }
     .get-started nav .part1{
         padding: 2px;
     }
@@ -287,22 +291,16 @@ html {
         font-size: 25px;
         padding: 2px;
     }
-    .get-started .center .login{
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* background-color: red; */
-        
+
+    .get-started nav{
+        padding: 0 20px;
     }
-    .get-started .center .login a{
+    .login a{
         text-decoration: none;
         color: #fff;
         font-size: 15px;
         background-color: black;
-        padding: 20px;
+        padding: 10px;
         border-radius: 5px;
     }
 }

@@ -1,8 +1,3 @@
-window.history.pushState(null, "", window.location.href);
-window.onpopstate = function () {
-  window.history.pushState(null, "", window.location.href);
-};
-
 function loaderAnimation(){
   var tl = gsap.timeline();
   tl
@@ -39,10 +34,7 @@ function loaderAnimation(){
         opacity:0
       })
 }
-
-    loaderAnimation();
-
-
+loaderAnimation();
 
 // async function fetchCurrentValues() {
 //     try {
