@@ -9,7 +9,7 @@ app.use(express.json());
 
 // PostgreSQL connection pool
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://drc:89OhljlFctnc1p6PtGpAWULvRkk3myPI@dpg-cs90rbjqf0us738h85p0-a/piezo_electric',
+  connectionString: process.env.DATABASE_URL || 'postgresql://piezodatabase_c43t_user:NN2TuZhn6dqpmItafH7fWBGNwex5cXMb@dpg-ctn60p3v2p9s73fgtgt0-a.singapore-postgres.render.com/piezodatabase_c43t',
   ssl: { rejectUnauthorized: false }, // Necessary for some cloud-hosted databases
 });
 
