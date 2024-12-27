@@ -1,0 +1,90 @@
+#include <Wire.h>
+#include <Adafruit_INA219.h>  // Current sensor library
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+
+#define CURRENT_SENSOR_PIN 34
+// Wi-Fi credentials
+const char* ssid = "iQOO Neo7 Pro";
+const char* password = "123456789";
+
+// Server URL (Change to your API endpoint)
+const String serverURL = "https://piezo-electric.onrender.com/api/update";
+
+// Voltage divider pins and constants
+// const int voltagePin = 34;  // ADC pin on ESP32
+const float R1 = 10000.0;   // Resistor 1 (Ohms)
+const float R2 = 1000.0;    // Resistor 2 (Ohms)
+
+// INA219 current sensor object
+// Adafruit_INA219 ina219;
+
+void setup() {
+  Serial.begin(115200);
+  // Wire.begin(21, 22);  // SDA, SCL for I2C communication
+  pinMode(CURRENT_SENSOR_PIN, INPUT);
+
+  // Initialize INA219
+  // if (!ina219.begin()) {
+  //   Serial.println("Failed to find INA219 chip");
+  //   while (1);
+  // }
+
+  // Connect to Wi-Fi
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting to Wi-Fi");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nConnected to Wi-Fi");
+}
+
+void loop() {
+  // Read the voltage from the voltage divider
+  // int rawValue = analogRead(voltagePin);
+  // float voltage = rawValue * (3.3 / 4095.0);
+  // //  * ((R1 + R2) / R2);  // Scale ADC reading
+
+  int sensorValue = analogRead(CURRENT_SENSOR_PIN); // Read the value from the sensor
+  float current = sensorValue;      // Convert ADC value to voltage
+  float voltage = (current - 2.5) / 0.185;   
+
+  // Read the current from INA219
+  // float current_mA = 0;
+  // float current_mA = ina219.getCurrent_mA();
+
+  // Print readings to Serial Monitor
+  Serial.print("Voltage: ");
+  Serial.print(voltage);
+  Serial.print(" V, Current: ");
+  Serial.print(current);
+  Serial.println(" mA");
+
+  // Send data to the server
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+    http.begin(serverURL);
+
+    // Prepare JSON payload
+    String payload = "{\"voltage\":" + String(voltage) + ",\"current\":" + String(current) + "}";
+    
+    // Send POST request
+    http.addHeader("Content-Type", "application/json");
+    int httpResponseCode = http.POST(payload);
+
+    // Check the response
+    if (httpResponseCode > 0) {
+      Serial.println("Data sent successfully");
+    } else {
+      Serial.print("Error sending data: ");
+      Serial.println(httpResponseCode);
+    }
+    http.end();
+  } else {
+    Serial.println("Wi-Fi Disconnected!");
+  }
+
+  delay(1000);  // Send data every 1 seconds
+}
