@@ -40,7 +40,7 @@
         async function fetchData() {
           try {
             // Fetch data from the API
-            const response = await fetch('http://localhost:3000/api/sensor-data');
+            const response = await fetch('https://piezo-electric.onrender.com/api/sensor-data');
             const data = await response.json();
     
             console.log('Fetched data:', data); // Debug log
