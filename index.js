@@ -40,15 +40,16 @@ app.post('/api/update', async (req, res) => {
 });
 
 // Fetch all historical data (GET)
-app.get('/api/history', async (req, res) => {
+app.get('/api/sensor-data', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM sensor_data ORDER BY timestamp DESC');
+    const result = await pool.query('SELECT voltage, current, timestamp FROM sensor_data ORDER BY timestamp DESC');
     res.status(200).json(result.rows);
   } catch (err) {
-    console.error('Database error:', err);
+    console.error('Error fetching data:', err);
     res.status(500).json({ error: 'Database error' });
   }
 });
+
 
 // Fetch the latest data (GET)
 app.get('/api/latest', async (req, res) => {

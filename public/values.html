@@ -7,49 +7,75 @@
     <title>Sahasra | History</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
     <style>
-        .custom-color-green{
+        .custom-color-green {
             color: #cbf654;
         }
-        body{
+
+        body {
             background-color: #111;
         }
     </style>
+    
+
 </head>
 
 <body class='bg-black-900'>
-    
+
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-white dark:text-gray-400">
-            <thead class="text-medium border-b custom-color-green custom-bg dark:bg-transparent ">
-                <tr>
-                    <th scope="col" class="px-4 py-2">
-                        DATE-TIME
-                    </th>
-                    <th scope="col" class="px-4 py-2">
-                        CURRENT (mA)
-                    </th>
-                    <th scope="col" class="px-4 py-2">
-                        VOLTAGE (mV)
-                    </th>
-                </tr>
+            <thead class="text-medium border-b custom-color-green custom-bg dark:bg-transparent">
+              <tr>
+                <th scope="col" class="px-4 py-2">DATE-TIME</th>
+                <th scope="col" class="px-4 py-2">CURRENT (mA)</th>
+                <th scope="col" class="px-4 py-2">VOLTAGE (mV)</th>
+              </tr>
             </thead>
             <tbody>
-                <tr class="bg-transparent border-b dark:bg-transparent dark:border-gray-700">
-                    <th scope="row" class="px-4 py-2 font-medium text-white whitespace-nowrap dark:text-white">
-                        16-01-2024 21:16:02 am
-                    </th>
-                    <td class="px-4 py-2">
-                        9.5
-                    </td>
-                    <td class="px-4 py-2">
-                        10.3
-                    </td>
-                </tr>
+              <!-- Dynamic rows will be injected here by JavaScript -->
             </tbody>
-        </table>
+          </table>
     </div>
 
-
+    <script>
+        async function fetchData() {
+          try {
+            // Fetch data from the API
+            const response = await fetch('http://localhost:3000/api/sensor-data');
+            const data = await response.json();
+    
+            console.log('Fetched data:', data); // Debug log
+    
+            const tableBody = document.querySelector('table tbody');
+            tableBody.innerHTML = ''; // Clear existing table rows
+    
+            // Populate the table with data
+            data.forEach((row) => {
+              const dateTime = new Date(row.timestamp).toLocaleString(); // Format timestamp
+              const current = parseFloat(row.current) || 0; // Fallback to 0 if invalid
+              const voltage = parseFloat(row.voltage) || 0; // Fallback to 0 if invalid
+    
+              const tr = document.createElement('tr');
+              tr.classList.add('bg-transparent', 'border-b', 'dark:bg-transparent', 'dark:border-gray-700');
+    
+              tr.innerHTML = `
+                <th scope="row" class="px-4 py-2 font-medium text-white whitespace-nowrap dark:text-white">
+                  ${dateTime}
+                </th>
+                <td class="px-4 py-2">${current.toFixed(2)}</td>
+                <td class="px-4 py-2">${voltage.toFixed(2)}</td>
+              `;
+    
+              tableBody.appendChild(tr);
+            });
+          } catch (err) {
+            console.error('Error fetching data:', err);
+          }
+        }
+    
+        // Fetch data when the page loads
+        document.addEventListener('DOMContentLoaded', fetchData);
+      </script>
+   
 </body>
 
 </html>
